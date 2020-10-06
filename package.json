@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dahl1033/express-intro/issues"
   },
-  "homepage": "https://github.com/dahl1033/express-intro#readme"
+  "homepage": "https://github.com/dahl1033/express-intro#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
