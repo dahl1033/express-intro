@@ -1,22 +1,23 @@
 {
-  "name": "express-intro",
+  "name": "ukkonen_express_intro_v1",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dahl1033/express-intro.git"
+    "url": "git+https://github.com/cassandradanger/ukkonen_express_intro_v1.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dahl1033/express-intro/issues"
+    "url": "https://github.com/cassandradanger/ukkonen_express_intro_v1/issues"
   },
-  "homepage": "https://github.com/dahl1033/express-intro#readme",
+  "homepage": "https://github.com/cassandradanger/ukkonen_express_intro_v1#readme",
   "dependencies": {
     "express": "^4.17.1"
   }
