@@ -2,26 +2,55 @@ console.log("hello from JS");
 
 $(document).ready(onReady);
 
-function onReady(){
-    console.log('hello from jquery');
-    // GET request
-    getRandomQuote();
+function onReady() {
+    // perform GET request
+    getQuotes();
+
+    $('#submit').on('click', submitQuote);
 }
 
-function getRandomQuote(){
-    console.log('getting random quote');
+function submitQuote() {
+    // grabbing value from the dom
+    let quote = $('#quote').val();
+    let author = $('#author').val();
+    console.log('clicked', quote, author);
+    // send data to server via post request
+    $.ajax({
+        method: 'POST',
+        url: '/submitQuotes',
+        data: {
+            quote: quote,
+            author: author
+        }
+    }).then(function (response) {
+        console.log('response: ', response);
+        getQuotes();
+    }).catch(function (error) {
+        //notifying the user of an error in post request
+        alert(error);
+    });
+}
+
+
+function getQuotes() {
+    console.log("get the quote");
     $.ajax({
         method: 'GET',
-        url: '/randomQuote'
-        // response is the res.send in server.js
-    }).then(function(response){
-        //response from server
-        console.log('response =', response);
+        url: '/quotes'
+    }).then(function (response) {
+        console.log('response', response);
         appendToDom(response);
     });
 }
 
-function appendToDom(dataToAppend){
+function appendToDom(dataToAppend) {
     $('#output').empty();
-    $('#output').append(dataToAppend.quote,'<br/>~ ', dataToAppend.author);
+    // take the response from the server
+    // append it to #output so it shows up on the DOM
+    for (let i = 0; i < dataToAppend.length; i++) {
+        $('#output').append(`
+            <p>${dataToAppend[i].quote}</p>
+            <i>from: ${dataToAppend[i].author}</i>
+        `)
+    }
 }
